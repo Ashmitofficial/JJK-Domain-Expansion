@@ -1,0 +1,63 @@
+body {
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+}
+
+.video-box img {
+    border: 5px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* THE DOMAINS */
+#domain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Let clicks pass through */
+    transition: all 0.5s ease;
+    z-index: 5;
+    opacity: 0;
+}
+
+/* Gojo's Expansion */
+.void-active {
+    opacity: 0.6 !important;
+    background: radial-gradient(circle, rgba(75,0,130,1) 0%, rgba(0,0,0,1) 100%);
+    box-shadow: inset 0 0 100px #8a2be2;
+    animation: pulse 2s infinite;
+}
+
+/* Sukuna's Expansion */
+.shrine-active {
+    opacity: 0.6 !important;
+    background: linear-gradient(0deg, rgba(139,0,0,1) 0%, rgba(0,0,0,1) 100%);
+    box-shadow: inset 0 0 100px #ff0000;
+    animation: shake 0.2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px); }
+    50% { transform: translate(-1px, -2px); }
+    100% { transform: translate(1px, 1px); }
+}
