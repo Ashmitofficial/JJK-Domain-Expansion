@@ -20,23 +20,23 @@
         const statusText = document.getElementById('status-text');
 
         async function updateStatus() {
-            try {
-                const response = await fetch('/get_status');
-                const data = await response.json();
-                
-                statusText.innerText = data.status.replace('_', ' ');
-                
-                // Reset classes
-                overlay.className = '';
-                
-                // Apply specific domain class
-                if (data.status === "UNLIMITED_VOID") {
-                    overlay.classList.add('void-active');
-                } else if (data.status === "MALEVOLENT_SHRINE") {
-                    overlay.classList.add('shrine-active');
-                }
-            } catch (e) { console.log("Waiting for server..."); }
+    try {
+        const response = await fetch('/get_status');
+        const data = await response.json();
+        
+        // Clean the status text for display
+        statusText.innerText = data.status.toUpperCase();
+        
+        // IMPORTANT: Match these to your classes.npy labels!
+        overlay.className = ''; // Reset CSS
+        
+        if (data.status === "gojo") { // Check if it's lowercase 'gojo'
+            overlay.classList.add('void-active');
+        } else if (data.status === "sukuna") { // Check if it's lowercase 'sukuna'
+            overlay.classList.add('shrine-active');
         }
+    } catch (e) { console.log("Connection lost..."); }
+}
 
         setInterval(updateStatus, 100); // Check 10 times per second
     </script>
