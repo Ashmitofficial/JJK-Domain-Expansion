@@ -31,10 +31,16 @@ while cap.isOpened():
             if i < 2:
                 mp_draw.draw_landmarks(frame, hand_lms, mp_hands.HAND_CONNECTIONS)
                 start_idx = i * 63
+                
+                # Get the wrist coordinates to act as the origin (0,0,0) for this hand
+                wrist_x = hand_lms.landmark[0].x
+                wrist_y = hand_lms.landmark[0].y
+                wrist_z = hand_lms.landmark[0].z
+                
                 for j, lm in enumerate(hand_lms.landmark):
-                    all_landmarks[start_idx + (j * 3)] = lm.x
-                    all_landmarks[start_idx + (j * 3) + 1] = lm.y
-                    all_landmarks[start_idx + (j * 3) + 2] = lm.z
+                    all_landmarks[start_idx + (j * 3)] = lm.x - wrist_x
+                    all_landmarks[start_idx + (j * 3) + 1] = lm.y - wrist_y
+                    all_landmarks[start_idx + (j * 3) + 2] = lm.z - wrist_z
 
     # --- TIMER & RECORDING LOGIC ---
     if recording:

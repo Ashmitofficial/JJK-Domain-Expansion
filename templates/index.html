@@ -23,16 +23,17 @@
     try {
         const response = await fetch('/get_status');
         const data = await response.json();
+        const normalizedStatus = String(data.status).toLowerCase();
         
         // Clean the status text for display
-        statusText.innerText = data.status.toUpperCase();
+        statusText.innerText = normalizedStatus.toUpperCase();
         
         // IMPORTANT: Match these to your classes.npy labels!
         overlay.className = ''; // Reset CSS
         
-        if (data.status === "gojo") { // Check if it's lowercase 'gojo'
+        if (normalizedStatus === "gojo") {
             overlay.classList.add('void-active');
-        } else if (data.status === "sukuna") { // Check if it's lowercase 'sukuna'
+        } else if (normalizedStatus === "sukuna") {
             overlay.classList.add('shrine-active');
         }
     } catch (e) { console.log("Connection lost..."); }
