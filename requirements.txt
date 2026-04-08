@@ -1,1 +1,9 @@
-pip freeze > requirements.txt
+flask
+opencv-python
+mediapipe
+numpy
+tensorflow
+pandas
+scikit-learn
+PyQt5
+pygame

@@ -28,12 +28,11 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* Let clicks pass through */
-    transition: all 0.5s ease;
-    z-index: 5;
+    z-index: 999; /* Make sure this is a high number */
+    pointer-events: none; /* Allows you to click things 'under' the glow */
+    transition: opacity 0.5s ease;
     opacity: 0;
 }
-
 /* Gojo's Expansion */
 .void-active {
     opacity: 0.6 !important;
