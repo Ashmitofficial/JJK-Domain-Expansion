@@ -26,7 +26,7 @@ To run the domain simulation, follow these steps to activate the specific virtua
 2.  **Activate the environment:**
     ```bash
     # Windows
-    venv311\\Scripts\\activate
+    .venv311\Scripts\activate
     ```
 3.  **Run the application:**
     ```bash
